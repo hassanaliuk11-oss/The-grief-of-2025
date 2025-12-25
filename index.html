@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HASSAN JATOI | THE GRIEF OF 2025</title>
+    <!-- Google Fonts: Crimson Text for a classic golden-age feel and Montserrat for clean navigation -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #121212;
+            /* Golden Palette */
+            --gold-primary: #d4af37;
+            --gold-soft: #f9f1d0;
+            --gold-metallic: linear-gradient(45deg, #af8e33, #f9f1d0, #af8e33);
+            
+            --text-primary: #f5f5f5;
+            --text-secondary: rgba(245, 245, 245, 0.6);
+            --border-color: rgba(212, 175, 55, 0.2);
+            
+            --font-serif: 'Crimson Text', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Container */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+
+        /* Branding Left */
+        .nav-branding {
+            text-decoration: none;
+            color: var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        .author-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-style: normal;
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Centered Title */
+        .book-title {
+            font-family: var(--font-serif);
+            font-style: normal;
+            color: var(--gold-soft);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        /* Menu Items Right */
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            font-style: normal;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Toggle */
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 24px;
+            height: 1px;
+            margin: 6px auto;
+            background-color: var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-section h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section p {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Collection Section */
+        .collection-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .poem-card {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .poem-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* Rose Image Styling */
+        .rose-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 2rem;
+            display: block;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .poem-card:hover .rose-icon {
+            transform: rotate(15deg) scale(1.1);
+            opacity: 1;
+        }
+
+        .poem-title {
+            font-family: var(--font-serif);
+            color: var(--gold-primary);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .poem-content {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 2;
+            text-align: center;
+            white-space: pre-line;
+        }
+
+        .poem-card:hover .poem-content {
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .navbar {
+                grid-template-columns: 1fr 1fr;
+                padding: 1rem 2rem;
+            }
+
+            .book-title {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: block;
+                justify-self: end;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+                color: var(--gold-primary);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="nav-branding">
+            <span class="author-name">Hassan Jatoi</span>
+        </a>
+
+        <div class="book-title">The Grief of 2025</div>
+
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#archive">Archive</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+
+    <main>
+        <section class="hero-section" id="home">
+            <h1>The Grief of 2025</h1>
+            <p>A Digital Poetry Portfolio</p>
+        </section>
+
+        <section class="collection-grid" id="collection">
+            <!-- Poem Card 1 -->
+            <div class="poem-card">
+                <svg class="rose-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 30C55 15 75 15 80 30C85 45 65 65 50 80C35 65 15 45 20 30C25 15 45 15 50 30Z" stroke="#d4af37" stroke-width="1.5"/>
+                    <path d="M50 30C50 30 40 40 35 55M50 30C50 30 60 40 65 55" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M50 80V95M50 85L40 80M50 88L60 83" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2 class="poem-title">The First Silence</h2>
+                <div class="poem-content">The clock stopped at midnight,
+                but the grief stayed awake
+                long after the world slept.</div>
+            </div>
+
+            <!-- Poem Card 2 -->
+            <div class="poem-card">
+                <svg class="rose-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 30C55 15 75 15 80 30C85 45 65 65 50 80C35 65 15 45 20 30C25 15 45 15 50 30Z" stroke="#d4af37" stroke-width="1.5"/>
+                    <path d="M50 30C50 30 40 40 35 55M50 30C50 30 60 40 65 55" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M50 80V95M50 85L40 80M50 88L60 83" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2 class="poem-title">The Last Bloom</h2>
+                <div class="poem-content">Even in the winter soil
+                something golden tries to rise
+                beneath the heavy skies
+                The earth is tired of carrying names
+                of holding prayers that never returned
+                yet it still opens its chest for one more seed
+                Cold walks slowly through the roots
+                teaching them the language of waiting
+                silence sits inside the hours
+                like a shadow that learned how to breathe
+                Time forgets how to be gentle
+                and days fall apart without warning
+                but the heart keeps stitching itself
+                with threads made of memory
+                The wind remembers every goodbye
+                ever spoken without courage
+                it repeats them softly
+                so loneliness does not feel ashamed
+                Night leans closer
+                asking the flower why it still believes
+                the flower answers without sound
+                because faith does not need noise
+                Pain presses deep like winter hands
+                but somewhere under the weight
+                a small warmth refuses to disappear
+                This bloom is not loud
+                not proud
+                not asking to be seen
+                It grows for the broken
+                for the ones who stayed quiet
+                for those who loved too much
+                and were never chosen
+                Even when the sky collapses into gray
+                even when hope walks with a limp
+                the last bloom rises slowly
+                carrying all the unsaid prayers
+                the world was too tired to hear</div>
+            </div>
+
+            <!-- Poem Card 3 -->
+            <div class="poem-card">
+                <svg class="rose-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 30C55 15 75 15 80 30C85 45 65 65 50 80C35 65 15 45 20 30C25 15 45 15 50 30Z" stroke="#d4af37" stroke-width="1.5"/>
+                    <path d="M50 30C50 30 40 40 35 55M50 30C50 30 60 40 65 55" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M50 80V95M50 85L40 80M50 88L60 83" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2 class="poem-title">Echoes of January</h2>
+                <div class="poem-content">Whispers in the hallway,
+                cold air against the glass,
+                marking the time as it pass.</div>
+            </div>
+
+            <!-- Poem Card 4 -->
+            <div class="poem-card">
+                <svg class="rose-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 30C55 15 75 15 80 30C85 45 65 65 50 80C35 65 15 45 20 30C25 15 45 15 50 30Z" stroke="#d4af37" stroke-width="1.5"/>
+                    <path d="M50 30C50 30 40 40 35 55M50 30C50 30 60 40 65 55" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M50 80V95M50 85L40 80M50 88L60 83" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2 class="poem-title">The Last Bloom II</h2>
+                <div class="poem-content">Morning arrives without asking
+                carrying tired light on its shoulders
+                as if even the sun has learned grief
+                The streets remember footsteps
+                that never came back
+                and walls keep secrets better than people
+                Hearts grow careful with hope
+                because hope once left them bleeding
+                yet something inside still waits
+                without reason without promise
+                Silence becomes a second language
+                spoken fluently by the lonely
+                it fills rooms
+                where laughter used to live
+                Dreams sit in corners
+                folded like old letters
+                never thrown away
+                never read again
+                The past knocks softly
+                not to return
+                only to remind
+                Eyes learn how to smile
+                while carrying storms behind them
+                and no one asks what it costs
+                Pain ages faster than the body
+                it learns every season by name
+                and still shows up uninvited
+                Some souls bloom late
+                not because they are weak
+                but because they were buried deeper
+                This bloom does not shine
+                it breathes
+                slowly
+                carefully
+                as if afraid of being noticed
+                It grows for the unheard
+                for the forgotten
+                for the ones who stayed gentle
+                in a world that rewarded noise
+                Even when the night feels endless
+                even when tomorrow sounds heavy
+                the last bloom leans toward light
+                not to escape the dark
+                but to forgive it</div>
+            </div>
+
+            <!-- Poem Card 5: WHEN SILENCE LEARNS TO CRY -->
+            <div class="poem-card">
+                <svg class="rose-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 30C55 15 75 15 80 30C85 45 65 65 50 80C35 65 15 45 20 30C25 15 45 15 50 30Z" stroke="#d4af37" stroke-width="1.5"/>
+                    <path d="M50 30C50 30 40 40 35 55M50 30C50 30 60 40 65 55" stroke="#d4af37" stroke-width="1" stroke-linecap="round"/>
+                    <path d="M50 80V95M50 85L40 80M50 88L60 83" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h2 class="poem-title">When Silence Learns to Cry</h2>
+                <div class="poem-content">Some silences are heavier than screams
+                they sit on the chest and refuse to move
+                teaching the heart how to ache quietly
+                The night listens without interrupting
+                because it knows this story too well
+                it has carried many broken thoughts
+                Memories arrive without permission
+                wearing the faces we tried to forget
+                and suddenly the room feels smaller
+                Breathing becomes a careful act
+                as if air itself might hurt
+                if taken too deeply
+                Hope stands far away
+                watching through tired eyes
+                afraid of being invited again
+                People say time heals
+                but time only teaches how to hide wounds
+                under polite smiles
+                There are thoughts that never sleep
+                they walk inside the mind
+                counting every loss twice
+                Love once promised warmth
+                but left behind a season
+                that never learned spring
+                Tears choose the quiet moments
+                when no one is watching
+                when strength finally sits down
+                Even courage gets tired
+                of pretending it is not afraid
+                Still something soft survives
+                a fragile yes inside the no
+                a weak light refusing to shut down
+                This is not happiness
+                this is endurance
+                wrapped in a beating heart
+                And when silence cries
+                it does not make a sound
+                it only makes you understand</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
